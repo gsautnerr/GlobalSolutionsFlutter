@@ -52,7 +52,10 @@ class _TicTacToeHomePageState extends State<TicTacToeHomePage> {
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
                         'Jogo da Velha - Oceano',
-                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -66,7 +69,8 @@ class _TicTacToeHomePageState extends State<TicTacToeHomePage> {
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
                           winner == 'Empate' ? 'Empatou!' : '$winner ganhou!',
-                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
                         ),
                       ),
                     if (winner.isNotEmpty)
