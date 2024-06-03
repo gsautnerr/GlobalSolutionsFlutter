@@ -30,43 +30,56 @@ class _TicTacToeHomePageState extends State<TicTacToeHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Jogo da Velha com Imagens'),
-      ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          double boardSize = constraints.maxWidth < constraints.maxHeight
-              ? constraints.maxWidth
-              : constraints.maxHeight * 0.7;
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/oceano.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            double boardSize = constraints.maxWidth < constraints.maxHeight
+                ? constraints.maxWidth
+                : constraints.maxHeight * 0.7;
 
-          return SingleChildScrollView(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: boardSize,
-                    height: boardSize,
-                    child: _buildBoard(),
-                  ),
-                  if (winner.isNotEmpty)
+            return Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        '$winner ganhou!',
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                        'Jogo da Velha - Oceano',
+                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
+                        textAlign: TextAlign.center,
                       ),
                     ),
-                  if (winner.isNotEmpty)
-                    ElevatedButton(
-                      onPressed: _resetGame,
-                      child: Text('Reiniciar Jogo'),
+                    Container(
+                      width: boardSize,
+                      height: boardSize,
+                      child: _buildBoard(),
                     ),
-                ],
+                    if (winner.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          winner == 'Empate' ? 'Empatou!' : '$winner ganhou!',
+                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    if (winner.isNotEmpty)
+                      ElevatedButton(
+                        onPressed: _resetGame,
+                        child: Text('Reiniciar Jogo'),
+                      ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
